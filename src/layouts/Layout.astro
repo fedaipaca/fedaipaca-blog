@@ -168,6 +168,29 @@ const posts = [
     },
   },
 ];
+
+const tags = [
+  { slug: "javascript", name: "JavaScript", count: 3 },
+  { slug: "react", name: "React", count: 3 },
+  { slug: "css", name: "CSS", count: 2 },
+  { slug: "python", name: "Python", count: 2 },
+  { slug: "astro", name: "Astro", count: 1 },
+  { slug: "typescript", name: "TypeScript", count: 1 },
+  { slug: "docker", name: "Docker", count: 1 },
+  { slug: "express", name: "Express", count: 1 },
+  { slug: "graphql", name: "GraphQL", count: 1 },
+  { slug: "next-js", name: "Next.js", count: 1 },
+  { slug: "redux", name: "Redux", count: 1 },
+  { slug: "jest", name: "Jest", count: 1 },
+  { slug: "vercel", name: "Vercel", count: 1 },
+  { slug: "seo", name: "SEO", count: 1 },
+  { slug: "web-accessibility", name: "Web Accessibility", count: 1 },
+  { slug: "unit-testing", name: "Unit Testing", count: 1 },
+  { slug: "state-management", name: "State Management", count: 1 },
+  { slug: "api-development", name: "API Development", count: 1 },
+  { slug: "clean-code", name: "Clean Code", count: 1 },
+  { slug: "how-to", name: "How To", count: 1 },
+];
 ---
 
 <html lang="en">
@@ -234,9 +257,24 @@ const posts = [
           </div>
         </div>
         <div class="w-96 p-10 sticky top-16 self-start">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ut quae necessitatibus voluptate
-          molestiae nesciunt pariatur laborum, enim omnis tenetur veritatis culpa ullam in deserunt veniam dolore libero
-          perspiciatis eos.
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Tags</h3>
+            <ul class="flex flex-wrap gap-2">
+              {
+                tags.map((tag) => (
+                  <li>
+                    <a
+                      href={`/tags/${tag.slug}`}
+                      class="inline-block rounded-full border border-gray-300 px-3 py-1 text-sm text-gray-700 hover:bg-white transition"
+                    >
+                      {tag.name}
+                      <span class="ml-2 text-xs text-gray-500">({tag.count})</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
         </div>
       </div>
     </main>
