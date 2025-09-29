@@ -1,0 +1,13 @@
+---
+import TagLink from "./TagLink.astro";
+const { tags } = Astro.props as { tags: { name: string; count: number }[] };
+---
+
+<ul class="flex flex-wrap gap-2">
+  {tags.map(
+    /** @param {{ slug: string; name: string; count: number }} tag */
+    (tag) => (
+      <TagLink tag={tag} />
+    )
+  )}
+</ul>

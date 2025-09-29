@@ -1,0 +1,54 @@
+---
+title: "Console.log: Simple Debugging Patterns"
+description: "Practical tips and patterns for using `console.log` effectively while debugging JavaScript."
+pubDate: "2025-09-29"
+updatedDate: "2025-09-29"
+draft: false
+tags: ["javascript", "debugging", "console"]
+author: "Fedai"
+image:
+  src: "/images/console-debug.jpg"
+  alt: "Console output in terminal"
+canonicalUrl: "https://example.com/console-log"
+---
+
+# console.log: Simple Debugging Patterns
+
+A tiny, practical guide to using `console.log` for quick debugging during development.
+
+## When to use it
+
+- Quick sanity checks (is a value defined?)
+- Inspecting objects during development
+- Logging execution flow in small scripts
+
+## Examples
+
+Basic usage:
+
+```js
+const name = "Fedai";
+console.log("Hello", name);
+```
+
+Logging objects with context:
+
+```js
+const user = { id: 1, name: "Fedai", role: "author" };
+console.log("user:", user);
+```
+
+Timing a block of code:
+
+```js
+console.time("load");
+// ... some work
+console.timeEnd("load");
+```
+
+## Notes
+
+- Remove or gate verbose logs in production builds.
+- Consider using structured logging or a proper logger for larger apps.
+
+Enjoy — this post is intentionally minimal so you can test your content collection setup.

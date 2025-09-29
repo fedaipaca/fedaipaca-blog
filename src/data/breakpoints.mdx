@@ -1,0 +1,49 @@
+---
+title: "Debugging with Breakpoints"
+description: "How to use breakpoints in the browser devtools to inspect execution and state."
+pubDate: "2025-09-29"
+updatedDate: "2025-09-29"
+draft: false
+tags: ["javascript", "debugging", "breakpoints"]
+author: "Fedai"
+image:
+  src: "/images/breakpoints.jpg"
+  alt: "Browser devtools with breakpoints"
+canonicalUrl: "https://example.com/debugging-with-breakpoints"
+---
+
+# Debugging with Breakpoints
+
+Breakpoints let you pause execution at a particular line so you can inspect variables, the call stack, and step through code.
+
+## Quick steps
+
+1. Open DevTools (F12 or Cmd+Option+I on Mac).
+2. Go to the Sources (or Debugger) panel.
+3. Click the line number to add a breakpoint.
+4. Trigger the code and DevTools will pause at the breakpoint.
+
+## Example
+
+Consider this small function that fetches data and parses JSON:
+
+```js
+async function loadUsers() {
+  const res = await fetch("/api/users");
+  const users = await res.json();
+  console.log(users);
+  return users;
+}
+
+loadUsers();
+```
+
+Set a breakpoint on the `const users = await res.json();` line to inspect `res` and the parsed `users` object.
+
+## Tips
+
+- Use conditional breakpoints when you only want to pause for certain values.
+- Use "step over", "step into" and "step out" to navigate.
+- Use watch expressions to evaluate variables continuously.
+
+This post is intentionally short so you can test content collection behavior. Replace the image path or add the image in `public/images` if you want it to resolve.

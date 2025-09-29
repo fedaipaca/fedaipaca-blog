@@ -1,196 +1,11 @@
 ---
+import Navigation from "../components/Navigation.astro";
+import LayoutBorders from "../components/LayoutBorders.astro";
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 
-const posts = [
-  {
-    url: "/",
-    title: "Understanding JavaScript Closures: Scope, Context, and Practical Use Cases Explained",
-    description:
-      "A comprehensive and deep dive into closures in JavaScript, exploring how they work under the hood, common pitfalls, and practical examples of leveraging closures for encapsulation, data privacy, and functional programming patterns.",
-    publishDate: "2024-01-01",
-    image: {
-      alt: "JavaScript code on a screen",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Getting Started with Astro: Building Ultra-Fast, Modern Websites from Scratch",
-    description:
-      "Learn how to build fast, modern, and highly optimized websites using the Astro framework, including project setup, component architecture, and deployment best practices for beginners and experienced developers alike.",
-    publishDate: "2024-01-02",
-    image: {
-      alt: "Astro logo with stars",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "CSS Grid vs Flexbox: When to Use Which for Responsive and Complex Layouts?",
-    description:
-      "A practical and detailed comparison between CSS Grid and Flexbox, covering their strengths, weaknesses, and real-world scenarios to help you decide which layout system to use for your next web project.",
-    publishDate: "2024-01-03",
-    image: {
-      alt: "CSS grid and flexbox illustration",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Deploying to Vercel: A Step-by-Step Guide for Modern Web Projects",
-    description:
-      "How to deploy your web projects to Vercel with ease, including configuration, environment variables, custom domains, and continuous deployment workflows for seamless production releases.",
-    publishDate: "2024-01-04",
-    image: {
-      alt: "Vercel dashboard screenshot",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "TypeScript for Beginners: Strong Typing and Safer JavaScript Development",
-    description:
-      "An introduction to TypeScript and its benefits for JavaScript developers, including type annotations, interfaces, generics, and how TypeScript can help prevent bugs and improve code maintainability.",
-    publishDate: "2024-01-05",
-    image: {
-      alt: "TypeScript logo on blue background",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Building Accessible Web Apps: Best Practices for Inclusive User Experiences",
-    description:
-      "Tips and best practices for making your web applications accessible to everyone, including semantic HTML, ARIA roles, keyboard navigation, and testing tools to ensure compliance with accessibility standards.",
-    publishDate: "2024-01-06",
-    image: {
-      alt: "Accessibility icon with web elements",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "React Hooks: useEffect Explained with Real-World Examples and Common Pitfalls",
-    description:
-      "Understanding the useEffect hook in React, including how it works, common use cases, dependency arrays, cleanup functions, and tips to avoid common mistakes when managing side effects in your components.",
-    publishDate: "2024-01-07",
-    image: {
-      alt: "React hooks diagram",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Writing Clean Code in Python: Readability, Maintainability, and Best Practices",
-    description:
-      "Best practices for writing readable and maintainable Python code, covering naming conventions, code organization, documentation, and leveraging Pythonic idioms for professional software development.",
-    publishDate: "2024-01-08",
-    image: {
-      alt: "Python code editor screenshot",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "SEO Basics for Developers: Optimizing Your Website for Search Engines",
-    description:
-      "Essential SEO techniques every developer should know, including meta tags, structured data, performance optimization, and how to make your websites more discoverable and rank higher in search results.",
-    publishDate: "2024-01-09",
-    image: {
-      alt: "SEO graph and analytics",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Next.js Dynamic Routing: Building Flexible and Scalable Page Structures",
-    description:
-      "How to implement dynamic routes in your Next.js applications, including file-based routing, catch-all routes, and best practices for organizing and loading dynamic content efficiently.",
-    publishDate: "2024-01-10",
-    image: {
-      alt: "Next.js logo with routing arrows",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "State Management with Redux: A Beginner's Guide to Predictable State in React Apps",
-    description:
-      "A beginner's guide to managing state in React apps using Redux, covering core concepts like actions, reducers, the store, middleware, and how to integrate Redux with modern React applications.",
-    publishDate: "2024-01-11",
-    image: {
-      alt: "Redux logo and state diagram",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Building REST APIs with Express: Step-by-Step Guide for Node.js Developers",
-    description:
-      "Step-by-step guide to creating RESTful APIs using Express.js, including routing, middleware, error handling, and connecting to databases for robust backend development.",
-    publishDate: "2024-01-12",
-    image: {
-      alt: "Express.js logo with API endpoints",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Introduction to GraphQL: Query Language for Modern APIs and Data Fetching",
-    description:
-      "Learn the basics of GraphQL and how it differs from REST, including schema design, queries, mutations, and how to integrate GraphQL into your web applications for flexible data fetching.",
-    publishDate: "2024-01-13",
-    image: {
-      alt: "GraphQL logo with schema diagram",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Docker for Web Developers: Containerizing and Deploying Modern Applications",
-    description:
-      "How to containerize your web applications using Docker, including writing Dockerfiles, managing images, using Docker Compose, and deploying containers to production environments.",
-    publishDate: "2024-01-14",
-    image: {
-      alt: "Docker whale with containers",
-      url: "/",
-    },
-  },
-  {
-    url: "/",
-    title: "Unit Testing with Jest: Writing Reliable and Maintainable JavaScript Tests",
-    description:
-      "A practical introduction to writing unit tests in JavaScript using Jest, covering test organization, mocking, code coverage, and best practices for ensuring code reliability and maintainability.",
-    publishDate: "2024-01-15",
-    image: {
-      alt: "Jest logo and test results",
-      url: "/",
-    },
-  },
-];
-
-const tags = [
-  { slug: "javascript", name: "JavaScript", count: 3 },
-  { slug: "react", name: "React", count: 3 },
-  { slug: "css", name: "CSS", count: 2 },
-  { slug: "python", name: "Python", count: 2 },
-  { slug: "astro", name: "Astro", count: 1 },
-  { slug: "typescript", name: "TypeScript", count: 1 },
-  { slug: "docker", name: "Docker", count: 1 },
-  { slug: "express", name: "Express", count: 1 },
-  { slug: "graphql", name: "GraphQL", count: 1 },
-  { slug: "next-js", name: "Next.js", count: 1 },
-  { slug: "redux", name: "Redux", count: 1 },
-  { slug: "jest", name: "Jest", count: 1 },
-  { slug: "vercel", name: "Vercel", count: 1 },
-  { slug: "seo", name: "SEO", count: 1 },
-  { slug: "web-accessibility", name: "Web Accessibility", count: 1 },
-  { slug: "unit-testing", name: "Unit Testing", count: 1 },
-  { slug: "state-management", name: "State Management", count: 1 },
-  { slug: "api-development", name: "API Development", count: 1 },
-  { slug: "clean-code", name: "Clean Code", count: 1 },
-  { slug: "how-to", name: "How To", count: 1 },
-];
+const { title } = Astro.props;
+const pageTitle = title ? `${title} | fedaipaca.` : "fedaipaca.";
 ---
 
 <html lang="en">
@@ -199,84 +14,24 @@ const tags = [
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>{pageTitle}</title>
   </head>
-  <body class="min-h-dvh overflow-x-hidden font-sans antialiased bg-gray-100 pt-16">
-    <!-- left right vertical borders, full screen height -->
-    <div class="pointer-events-none fixed inset-0 z-50 flex justify-center">
-      <div class="h-full w-full max-w-7xl border-r-[1px] border-l-[1px] border-gray-400"></div>
-    </div>
-    <!-- end of left right borders -->
+  <body class="min-h-screen flex flex-col overflow-x-hidden font-sans antialiased bg-gray-100 pt-16">
+    <LayoutBorders />
+    <Navigation />
 
-    <nav class="fixed top-0 right-0 left-0 z-40 h-16 border-b-[1px] border-gray-400 bg-gray-100">
-      <div class="mx-auto flex h-full max-w-7xl justify-between">
-        <div class="flex items-stretch">
-          <a href="/" class="flex items-center px-10 text-lg font-medium font-mono hover:underline">fedaipaca.</a>
-        </div>
-        <div class="flex items-stretch">
-          <a href="/" class="flex items-center px-8 hover:bg-stone-200">Home</a>
-          <a href="/" class="flex items-center px-8 hover:bg-stone-200">Blog</a>
-          <a href="/" class="flex items-center px-8 hover:bg-stone-200">About</a>
-          <a href="/" class="flex items-center px-10 border-l border-gray-400 hover:bg-stone-200">Contact</a>
-        </div>
-      </div>
-    </nav>
+    <!-- Optional hero slot (e.g. large header/hero only present on some pages) -->
+    <slot name="hero" />
 
-    <header class="max-w-7xl mx-auto">
-      <section class="h-[32rem] px-10 flex items-center">
-        <h1 class="text-9xl tracking-tight">Code feature</h1>
-      </section>
-    </header>
-
-    <main class="">
-      <div class="max-w-7xl mx-auto border-t border-gray-400 flex items-stretch">
-        <div class="border-r-[1px] border-gray-400 flex-1">
-          <div class="divide-y-[1px] divide-gray-400">
-            {
-              posts.map((post, i) => (
-                <a href={post.url} class="flex p-10 group hover:bg-white">
-                  <div class="w-48 h-32 flex-shrink-0" style={`background-color: hsl(${i * 24}, 70%, 80%)`} />
-                  <div class="flex-1 ml-10 flex flex-col justify-between space-y-2">
-                    <div>
-                      <h2 class="text-3xl font-semibold mb-1  group-hover:underline">{post.title}</h2>
-                      <p class="text-gray-600 text-sm mb-2">{post.description}</p>
-                    </div>
-                    <div class="flex items-center justify-between text-xs text-gray-500 font-mono tracking-tighter">
-                      <span>
-                        {new Date(post.publishDate).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              ))
-            }
-          </div>
-        </div>
-        <div class="w-96 p-10 sticky top-16 self-start">
-          <div>
-            <h3 class="text-xl font-semibold mb-4">Tags</h3>
-            <ul class="flex flex-wrap gap-2">
-              {
-                tags.map((tag) => (
-                  <li>
-                    <a
-                      href={`/tags/${tag.slug}`}
-                      class="inline-block rounded-full border border-gray-300 px-3 py-1 text-sm text-gray-700 hover:bg-white transition"
-                    >
-                      {tag.name}
-                      <span class="ml-2 text-xs text-gray-500">({tag.count})</span>
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
-      </div>
+    <!-- Page content is wrapped in a single main container for consistent width and SEO semantics -->
+    <main class="max-w-7xl mx-auto flex-1">
+      <slot />
     </main>
+
+    <div class="w-full border-t border-gray-400">
+      <div class="max-w-7xl mx-auto p-8">
+        <Footer />
+      </div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,10 @@
+---
+import PostCard from "./PostCard.astro";
+const { posts } = Astro.props as { posts: { url: string; title: string; description: string; publishDate: string }[] };
+---
+
+<div class="divide-y-[1px] divide-gray-400">
+  {posts.map((post, i) => (
+    <PostCard post={post} index={i} />
+  ))}
+</div>

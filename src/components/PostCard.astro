@@ -1,0 +1,25 @@
+---
+const { post, index } = Astro.props;
+---
+
+<a href={post.url} class="flex p-10 group hover:bg-white">
+  <div
+    class="w-48 h-32 flex-shrink-0"
+    style={`background-color: hsl(${index * 24}, 70%, 80%)`}
+  />
+  <div class="flex-1 ml-10 flex flex-col justify-between space-y-2">
+    <div>
+      <h2 class="text-3xl font-semibold mb-1  group-hover:underline">{post.title}</h2>
+      <p class="text-gray-600 text-sm mb-2">{post.description}</p>
+    </div>
+    <div class="flex items-center justify-between text-xs text-gray-500 font-mono tracking-tighter">
+      <span>
+        {new Date(post.publishDate).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </span>
+    </div>
+  </div>
+</a>

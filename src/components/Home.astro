@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import PostCardList from "./PostCardList.astro";
+import TagLinkList from "./TagLinkList.astro";
+
+const rawPosts = await getCollection("blog");
+
+// Build posts shape expected by PostCardList/PostCard
+const posts = rawPosts
+  .filter((p) => p.data?.draft !== true)
+  .sort((a, b) => (b.data.pubDate?.valueOf() || 0) - (a.data.pubDate?.valueOf() || 0))
+  .map((p) => ({
+    url: `/posts/${p.id}`,
+    title: p.data.title,
+    description: p.data.description || "",
+    publishDate: p.data.pubDate ? p.data.pubDate.toISOString() : "",
+  }));
+
+// Compute tag counts from collection data (use tag name as URL key)
+const tagCounts: Record<string, number> = {};
+for (const p of rawPosts) {
+  const t = p.data?.tags ?? [];
+  for (const name of t) {
+    tagCounts[name] = (tagCounts[name] ?? 0) + 1;
+  }
+}
+const tags = Object.keys(tagCounts).map((name) => ({ name, count: tagCounts[name] }));
+---
+
+<div class="border-t border-gray-400 flex items-stretch">
+  <div class="border-r-[1px] border-gray-400 flex-1">
+    <PostCardList posts={posts} />
+  </div>
+  <div class="w-96 p-10 sticky top-16 self-start">
+    <div>
+      <h3 class="text-xl font-semibold mb-4">Tags</h3>
+      <TagLinkList tags={tags} />
+    </div>
+  </div>
+</div>

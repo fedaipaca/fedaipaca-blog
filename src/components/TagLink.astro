@@ -1,0 +1,13 @@
+---
+const { tag, showCount = true } = Astro.props as { tag: { name: string; count?: number }; showCount?: boolean };
+---
+
+<li>
+  <a
+    href={`/tags/${encodeURIComponent(tag.name)}`}
+    class="inline-block rounded-full border border-gray-300 px-3 py-1 text-sm text-gray-700 hover:bg-white transition"
+  >
+    {tag.name}
+    {showCount && tag.count ? <span class="ml-2 text-xs text-gray-500">({tag.count})</span> : null}
+  </a>
+</li>
