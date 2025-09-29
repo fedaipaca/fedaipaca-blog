@@ -1,0 +1,28 @@
+---
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PostLayout from "../../layouts/PostLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <div class="flex">
+    <div class="flex-1 p-16 border-r border-gray-400">
+      <PostLayout>
+        <Content />
+      </PostLayout>
+    </div>
+    <div class="w-96 shrink-0 p-16 sticky top-16 self-start">foooo</div>
+  </div>
+</Layout>

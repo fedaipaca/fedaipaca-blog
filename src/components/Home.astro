@@ -10,7 +10,7 @@ const posts = rawPosts
   .filter((p) => p.data?.draft !== true)
   .sort((a, b) => (b.data.pubDate?.valueOf() || 0) - (a.data.pubDate?.valueOf() || 0))
   .map((p) => ({
-    url: `/posts/${p.id}`,
+    url: `/blog/${p.id}`,
     title: p.data.title,
     description: p.data.description || "",
     publishDate: p.data.pubDate ? p.data.pubDate.toISOString() : "",
