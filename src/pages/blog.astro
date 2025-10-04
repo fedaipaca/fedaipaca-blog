@@ -1,0 +1,124 @@
+---
+import "../styles/global.css";
+import Home from "../components/Home.astro";
+import Layout from "../layouts/Layout.astro";
+import appleImage from "../assets/apple.jpg";
+import orangeImage from "../assets/orange.jpg";
+import cherryImage from "../assets/cherry.jpg";
+import githubIcon from "../assets/github.svg";
+import linkedinIcon from "../assets/linkedin.svg";
+import javascriptImage from "../assets/javascript.jpg";
+
+const chainingExample = `fetch('/api/data')
+  .then(res => {
+    if (!res.ok) throw new Error('Network error');
+    return res.json();
+  })
+  .then(data => {
+    console.log('Data received:', data);
+    return fetchUserDetails(data.userId);
+  })
+  .then(details => {
+    console.log('User details:', details);
+  })
+  .catch(err => {
+    console.error('Error occurred:', err);
+  });`;
+
+const concurrencyExample = `async function fetchMultipleUrls(urls) {
+  try {
+    const responses = await Promise.all(urls.map(url => fetch(url)));
+    const data = await Promise.all(responses.map(res => res.json()));
+    console.log('Data received:', data);
+  } catch (err) {
+    console.error('Error occurred:', err);
+  }
+};`;
+
+const promiseExample = `const delay = (ms) => new Promise((resolve) => {
+  setTimeout(() => resolve(ms), ms);
+});
+delay(500).then((ms) => {
+  console.log(\`Waited \${ms}ms\`);
+});`;
+
+const promiseAsyncAwaitExample = `async function loadUser(id) {
+  try {
+    const res = await fetch(\`/api/users/\${id}\`);
+    if (!res.ok) throw new Error('Failed to load user');
+    const user = await res.json();
+    const details = await fetchUserDetails(user.id);
+    return { user, details };
+  } catch (err) {
+    // Handle or rethrow
+    throw err;
+  }
+}`;
+
+const badExample = `function badFetch() {
+  fetch('/api').then(res => {
+    res.json().then(data => {
+      // inner promise not returned; outer chain can't wait for this
+      console.log(data);
+    });
+  });
+}`;
+
+const goodExample = `function goodFetch() {
+  return fetch('/api')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      return data; // properly returned
+    });
+}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>fedaipaca</title>
+  </head>
+  <body class="min-h-screen flex flex-col font-sans antialiased text-neutral-900 bg-stone-100">
+    <!-- navigation -->
+    <header class="border-b border-neutral-400 fixed top-0 inset-x-0 bg-stone-100">
+      <div class="max-w-4xl mx-auto h-14 px-2 flex items-stretch justify-between font-mono">
+        <div class="h-full flex">
+          <a href="/" class="self-stretch flex items-center px-2 text-lg font-bold">fedaipaca;</a>
+        </div>
+        <nav class="h-full flex">
+          <a href="/" class="self-stretch flex items-center px-2 active:underline">Home</a>
+          <a href="/contact" class="self-stretch flex items-center px-2 active:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!-- end navigation -->
+
+    <!-- post -->
+    <main class="max-w-4xl w-full mx-auto grow pt-14">
+      <article class="prose-l py-14 px-4">
+        <h1>Blog content will come here</h1>
+      </article>
+    </main>
+    <!-- post end -->
+
+    <!-- footer -->
+    <footer class="border-t border-neutral-400">
+      <div class="max-w-4xl mx-auto px-4 py-8 space-y-4 md:flex md:items-center md:justify-between md:space-y-0">
+        <p class="text-sm text-neutral-600 font-mono">
+          <span class="block">© 2025 fedaipaca;</span>
+          <span class="mt-1 block">// Code Blog, well-commented thoughts.</span>
+        </p>
+        <nav class="text-center">
+          <a href="/" class="text-sm text-neutral-600 font-mono px-2">Home</a>
+          <a href="/contact" class="text-sm text-neutral-600 font-mono px-2">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+  <!-- footer end -->
+</html>
