@@ -1,52 +1,13 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>fedaipaca</title>
-  </head>
-  <body class="min-h-screen flex flex-col font-sans antialiased text-neutral-900 bg-stone-100">
-    <!-- navigation -->
-    <header class="border-b border-neutral-400 fixed top-0 inset-x-0 bg-stone-100">
-      <div class="max-w-4xl mx-auto h-14 px-2 flex items-stretch justify-between font-mono">
-        <div class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 text-lg font-bold">fedaipaca;</a>
-        </div>
-        <nav class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 active:underline">Home</a>
-          <a href="/contact" class="self-stretch flex items-center px-2 active:underline">Contact</a>
-        </nav>
-      </div>
-    </header>
-    <!-- end navigation -->
+<BaseLayout>
+  <!-- post -->
+  <article class="prose-l py-14 px-4">
+    <h1>Blog content will come here</h1>
+  </article>
 
-    <!-- post -->
-    <main class="max-w-4xl w-full mx-auto grow pt-14">
-      <article class="prose-l py-14 px-4">
-        <h1>Blog content will come here</h1>
-      </article>
-    </main>
-    <!-- post end -->
-
-    <!-- footer -->
-    <footer class="border-t border-neutral-400">
-      <div class="max-w-4xl mx-auto px-4 py-8 space-y-4 md:flex md:items-center md:justify-between md:space-y-0">
-        <p class="text-sm text-neutral-600 font-mono">
-          <span class="block">© 2025 fedaipaca;</span>
-          <span class="mt-1 block">// Code Blog, well-commented thoughts.</span>
-        </p>
-        <nav class="text-center">
-          <a href="/" class="text-sm text-neutral-600 font-mono px-2">Home</a>
-          <a href="/contact" class="text-sm text-neutral-600 font-mono px-2">Contact</a>
-        </nav>
-      </div>
-    </footer>
-  </body>
-  <!-- footer end -->
-</html>
+  <!-- post end -->
+</BaseLayout>

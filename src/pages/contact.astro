@@ -6,17 +6,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <div slot="hero" class="flex items-start gap-4">
-    <div
-      class="flex items-center justify-center border border-neutral-300 rounded size-20 shrink-0 text-2xl leading-none font-mono"
-    >
-      [@]
+  <section slot="hero"  class="px-4">
+    <div class="h-48 border-b border-neutral-400 flex items-center">
+      <div class="flex items-start gap-4">
+        <div
+          class="flex items-center justify-center border border-neutral-300 rounded size-20 shrink-0 text-2xl leading-none font-mono"
+        >
+          [@]
+        </div>
+        <div class="flex flex-col justify-start gap-1">
+          <h1 class="text-3xl font-extrabold">Reach Out</h1>
+          <p class="text-neutral-600 font-mono text-sm leading-snug">~/$ ping fedaipaca -c 1</p>
+        </div>
+      </div>
     </div>
-    <div class="flex flex-col justify-start gap-1">
-      <h1 class="text-3xl font-extrabold">Reach Out</h1>
-      <p class="text-neutral-600 font-mono text-sm leading-snug">~/$ ping fedaipaca -c 1</p>
-    </div>
-  </div>
+  </section>
 
   <div>
     <h2 class="font-mono">// GET IN TOUCH</h2>
@@ -24,7 +28,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <a
         href="https://github.com/fedaipaca"
         target="_blank"
-        class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-neutral-200"
+        class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-stone-50"
       >
         <div class="w-20 shrink-0">
           <img src={githubIcon.src} alt="" class="w-full h-full" />
@@ -41,7 +45,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <a
         href="https://linkedin.com/in/fedaipaca"
         target="_blank"
-        class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-neutral-200"
+        class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-stone-50"
       >
         <div class="w-20 shrink-0">
           <img src={linkedinIcon.src} alt="" class="w-full h-full" />
@@ -57,4 +61,3 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </div>
 </BaseLayout>
-
