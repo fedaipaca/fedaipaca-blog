@@ -1,204 +1,152 @@
 ---
-import "../styles/global.css";
-import Home from "../components/Home.astro";
-import Layout from "../layouts/Layout.astro";
 import appleImage from "../assets/apple.jpg";
 import orangeImage from "../assets/orange.jpg";
 import cherryImage from "../assets/cherry.jpg";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>fedaipaca</title>
-  </head>
-  <body class="min-h-screen flex flex-col font-sans antialiased text-neutral-900 bg-stone-100">
-    <!-- navigation -->
-    <header class="border-b border-neutral-400 fixed top-0 inset-x-0 bg-stone-100">
-      <div class="max-w-4xl mx-auto h-14 px-2 flex items-stretch justify-between font-mono">
-        <div class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 text-lg font-bold">fedaipaca;</a>
-        </div>
-        <nav class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 active:underline">Home</a>
-          <a href="/contact" class="self-stretch flex items-center px-2 active:underline">Contact</a>
-        </nav>
-      </div>
-    </header>
-    <!-- end navigation -->
+<BaseLayout>
+  <div slot="hero" class="flex items-start gap-4">
+    <div
+      class="flex items-center justify-center border border-neutral-300 rounded size-20 shrink-0 text-2xl leading-none font-mono"
+    >
+      [&gt;_]
+    </div>
+    <div class="flex flex-col justify-start gap-1">
+      <h1 class="text-3xl font-extrabold">Code Blog</h1>
+      <p class="text-neutral-600 font-mono text-sm leading-snug">~/$ echo Insights on software and engineering.</p>
+    </div>
+  </div>
 
-    <main class="max-w-4xl w-full mx-auto grow pt-14">
-      <!-- hero -->
-      <section class="px-4">
-        <div class="h-48 border-b border-neutral-400 flex items-center">
-          <div class="flex items-start gap-4">
-            <div
-              class="flex items-center justify-center border border-neutral-300 rounded size-20 shrink-0 text-2xl leading-none font-mono"
-            >
-              [&gt;_]
-            </div>
-            <div class="flex flex-col justify-start gap-1">
-              <h1 class="text-3xl font-extrabold">Code Blog</h1>
-              <p class="text-neutral-600 font-mono text-sm leading-snug">
-                ~/$ echo Insights on software and engineering.
-              </p>
-            </div>
+  <div>
+    <h2 class="font-mono">// POSTS</h2>
+
+    <div class="divide-y divide-gray-300">
+      <article class="flex items-start gap-4 py-8">
+        <div class="w-20 shrink-0 rounded overflow-hidden">
+          <img src={appleImage.src} alt="" class="aspect-square object-cover" />
+        </div>
+        <div class="">
+          <h3 class="text-lg font-bold leading-snug mt-0">Understanding Async Patterns in JavaScript</h3>
+
+          <p class="mt-2 text-neutral-600 leading-snug text-sm">
+            A concise guide to callbacks, promises, and async/await with practical examples to tame concurrency.
+          </p>
+          <time datetime="2025-10-04" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
+            Oct 4, 2025
+          </time>
+          <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
+            <span class="">#javascript</span>
+            <span class="">#async</span>
+            <span class="">#patterns</span>
           </div>
         </div>
-      </section>
-      <!-- end hero -->
-
-      <!-- posts -->
-      <section class="px-4 py-8">
-        <h2 class="font-mono">// POSTS</h2>
-        <div class="divide-y divide-gray-300">
-          <article class="flex items-start gap-4 py-8">
-            <div class="w-20 shrink-0 rounded overflow-hidden">
-              <img src={appleImage.src} alt="" class="aspect-square object-cover" />
-            </div>
-            <div class="">
-              <h3 class="text-lg font-bold leading-snug mt-0">Understanding Async Patterns in JavaScript</h3>
-
-              <p class="mt-2 text-neutral-600 leading-snug text-sm">
-                A concise guide to callbacks, promises, and async/await with practical examples to tame concurrency.
-              </p>
-              <time datetime="2025-10-04" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
-                Oct 4, 2025
-              </time>
-              <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
-                <span class="">#javascript</span>
-                <span class="">#async</span>
-                <span class="">#patterns</span>
-              </div>
-            </div>
-          </article>
-          <article class="flex items-start gap-4 py-8">
-            <div class="w-20 shrink-0 rounded overflow-hidden">
-              <img src={orangeImage.src} alt="" class="aspect-square object-cover" />
-            </div>
-            <div class="">
-              <h3 class="text-lg font-bold leading-snug mt-0">TypeScript Tips</h3>
-
-              <p class="mt-2 text-neutral-600 leading-snug text-sm">
-                Practical techniques to make everyday TypeScript code safer and clearer. Learn small patterns you can
-                apply immediately: narrower union types, meaningful utility types, and how to balance strictness with
-                developer ergonomics.
-              </p>
-              <time datetime="2025-09-18" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
-                Sep 18, 2025
-              </time>
-              <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
-                <span class="">#typescript</span>
-                <span class="">#tips</span>
-                <span class="">#best-practices</span>
-                <span class="">#devtools</span>
-                <span class="">#static-types</span>
-              </div>
-            </div>
-          </article>
-          <article class="flex items-start gap-4 py-8">
-            <div class="w-20 shrink-0 rounded overflow-hidden">
-              <img src={cherryImage.src} alt="" class="aspect-square object-cover" />
-            </div>
-            <div class="">
-              <h3 class="text-lg font-bold leading-snug mt-0">
-                A Step-by-Step Walkthrough to Deploying Astro Sites with GitHub Actions and Managing Secrets
-              </h3>
-
-              <p class="mt-2 text-neutral-600 leading-snug text-sm">Quick CI/CD checklist and action snippets.</p>
-              <time datetime="2025-10-01" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
-                Oct 1, 2025
-              </time>
-              <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
-                <span class="">#astro</span>
-                <span class="">#github-actions</span>
-              </div>
-            </div>
-          </article>
-          <article class="flex items-start gap-4 py-8">
-            <div class="w-20 shrink-0 rounded overflow-hidden">
-              <img src={appleImage.src} alt="" class="aspect-square object-cover" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold leading-snug mt-0">Optimizing Web Performance with Lighthouse</h3>
-              <p class="mt-2 text-neutral-600 leading-snug text-sm">
-                Practical steps to interpret Lighthouse reports, fix common bottlenecks, and prioritize improvements
-                that matter to users.
-              </p>
-              <time datetime="2025-08-12" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
-                Aug 12, 2025
-              </time>
-              <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
-                <span>#performance</span>
-                <span>#lighthouse</span>
-                <span>#webdev</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="flex items-start gap-4 py-8">
-            <div class="w-20 shrink-0 rounded overflow-hidden">
-              <img src={orangeImage.src} alt="" class="aspect-square object-cover" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold leading-snug mt-0">Designing Accessible UI Components</h3>
-              <p class="mt-2 text-neutral-600 leading-snug text-sm">
-                A hands-on checklist for building accessible buttons, forms, and navigation—covering semantics, keyboard
-                support, and testing.
-              </p>
-              <time datetime="2025-07-30" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
-                Jul 30, 2025
-              </time>
-              <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
-                <span>#accessibility</span>
-                <span>#a11y</span>
-                <span>#components</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="flex items-start gap-4 py-8">
-            <div class="w-20 shrink-0 rounded overflow-hidden">
-              <img src={cherryImage.src} alt="" class="aspect-square object-cover" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold leading-snug mt-0">Serverless Patterns for Modern Apps</h3>
-              <p class="mt-2 text-neutral-600 leading-snug text-sm">
-                Exploring event-driven designs, cold-start mitigation, and cost considerations when moving features to
-                serverless platforms.
-              </p>
-              <time datetime="2025-06-21" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
-                Jun 21, 2025
-              </time>
-              <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
-                <span>#serverless</span>
-                <span>#cloud</span>
-                <span>#patterns</span>
-              </div>
-            </div>
-          </article>
+      </article>
+      <article class="flex items-start gap-4 py-8">
+        <div class="w-20 shrink-0 rounded overflow-hidden">
+          <img src={orangeImage.src} alt="" class="aspect-square object-cover" />
         </div>
-      </section>
-    </main>
-    <!-- posts end -->
+        <div class="">
+          <h3 class="text-lg font-bold leading-snug mt-0">TypeScript Tips</h3>
 
-    <!-- footer -->
-    <footer class="border-t border-neutral-400">
-      <div class="max-w-4xl mx-auto px-4 py-8 space-y-4 md:flex md:items-center md:justify-between md:space-y-0">
-        <p class="text-sm text-neutral-600 font-mono">
-          <span class="block">© 2025 fedaipaca;</span>
-          <span class="mt-1 block">// Code Blog, well-commented thoughts.</span>
-        </p>
-        <nav class="text-center">
-          <a href="/" class="text-sm text-neutral-600 font-mono px-2">Home</a>
-          <a href="/contact" class="text-sm text-neutral-600 font-mono px-2">Contact</a>
-        </nav>
-      </div>
-    </footer>
-  </body>
-  <!-- footer end -->
-</html>
+          <p class="mt-2 text-neutral-600 leading-snug text-sm">
+            Practical techniques to make everyday TypeScript code safer and clearer. Learn small patterns you can apply
+            immediately: narrower union types, meaningful utility types, and how to balance strictness with developer
+            ergonomics.
+          </p>
+          <time datetime="2025-09-18" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
+            Sep 18, 2025
+          </time>
+          <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
+            <span class="">#typescript</span>
+            <span class="">#tips</span>
+            <span class="">#best-practices</span>
+            <span class="">#devtools</span>
+            <span class="">#static-types</span>
+          </div>
+        </div>
+      </article>
+      <article class="flex items-start gap-4 py-8">
+        <div class="w-20 shrink-0 rounded overflow-hidden">
+          <img src={cherryImage.src} alt="" class="aspect-square object-cover" />
+        </div>
+        <div class="">
+          <h3 class="text-lg font-bold leading-snug mt-0">
+            A Step-by-Step Walkthrough to Deploying Astro Sites with GitHub Actions and Managing Secrets
+          </h3>
+
+          <p class="mt-2 text-neutral-600 leading-snug text-sm">Quick CI/CD checklist and action snippets.</p>
+          <time datetime="2025-10-01" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
+            Oct 1, 2025
+          </time>
+          <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
+            <span class="">#astro</span>
+            <span class="">#github-actions</span>
+          </div>
+        </div>
+      </article>
+      <article class="flex items-start gap-4 py-8">
+        <div class="w-20 shrink-0 rounded overflow-hidden">
+          <img src={appleImage.src} alt="" class="aspect-square object-cover" />
+        </div>
+        <div>
+          <h3 class="text-lg font-bold leading-snug mt-0">Optimizing Web Performance with Lighthouse</h3>
+          <p class="mt-2 text-neutral-600 leading-snug text-sm">
+            Practical steps to interpret Lighthouse reports, fix common bottlenecks, and prioritize improvements that
+            matter to users.
+          </p>
+          <time datetime="2025-08-12" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
+            Aug 12, 2025
+          </time>
+          <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
+            <span>#performance</span>
+            <span>#lighthouse</span>
+            <span>#webdev</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="flex items-start gap-4 py-8">
+        <div class="w-20 shrink-0 rounded overflow-hidden">
+          <img src={orangeImage.src} alt="" class="aspect-square object-cover" />
+        </div>
+        <div>
+          <h3 class="text-lg font-bold leading-snug mt-0">Designing Accessible UI Components</h3>
+          <p class="mt-2 text-neutral-600 leading-snug text-sm">
+            A hands-on checklist for building accessible buttons, forms, and navigation—covering semantics, keyboard
+            support, and testing.
+          </p>
+          <time datetime="2025-07-30" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
+            Jul 30, 2025
+          </time>
+          <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
+            <span>#accessibility</span>
+            <span>#a11y</span>
+            <span>#components</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="flex items-start gap-4 py-8">
+        <div class="w-20 shrink-0 rounded overflow-hidden">
+          <img src={cherryImage.src} alt="" class="aspect-square object-cover" />
+        </div>
+        <div>
+          <h3 class="text-lg font-bold leading-snug mt-0">Serverless Patterns for Modern Apps</h3>
+          <p class="mt-2 text-neutral-600 leading-snug text-sm">
+            Exploring event-driven designs, cold-start mitigation, and cost considerations when moving features to
+            serverless platforms.
+          </p>
+          <time datetime="2025-06-21" class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
+            Jun 21, 2025
+          </time>
+          <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
+            <span>#serverless</span>
+            <span>#cloud</span>
+            <span>#patterns</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</BaseLayout>

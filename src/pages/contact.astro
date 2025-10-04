@@ -1,104 +1,60 @@
 ---
 import "../styles/global.css";
-import Home from "../components/Home.astro";
-import Layout from "../layouts/Layout.astro";
-import appleImage from "../assets/apple.jpg";
-import orangeImage from "../assets/orange.jpg";
-import cherryImage from "../assets/cherry.jpg";
 import githubIcon from "../assets/github.svg";
 import linkedinIcon from "../assets/linkedin.svg";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>fedaipaca</title>
-  </head>
-  <body class="min-h-screen flex flex-col font-sans antialiased text-neutral-900 bg-stone-100">
-    <!-- navigation -->
-    <header class="border-b border-neutral-400 fixed top-0 inset-x-0 bg-stone-100">
-      <div class="max-w-4xl mx-auto h-14 px-2 flex items-stretch justify-between font-mono">
-        <div class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 text-lg font-bold">fedaipaca;</a>
+<BaseLayout>
+  <div slot="hero" class="flex items-start gap-4">
+    <div
+      class="flex items-center justify-center border border-neutral-300 rounded size-20 shrink-0 text-2xl leading-none font-mono"
+    >
+      [@]
+    </div>
+    <div class="flex flex-col justify-start gap-1">
+      <h1 class="text-3xl font-extrabold">Reach Out</h1>
+      <p class="text-neutral-600 font-mono text-sm leading-snug">~/$ ping fedaipaca -c 1</p>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="font-mono">// GET IN TOUCH</h2>
+    <div class="mt-8 space-y-8">
+      <a
+        href="https://github.com/fedaipaca"
+        target="_blank"
+        class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-neutral-200"
+      >
+        <div class="w-20 shrink-0">
+          <img src={githubIcon.src} alt="" class="w-full h-full" />
         </div>
-        <nav class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 active:underline">Home</a>
-          <a href="/contact" class="self-stretch flex items-center px-2 active:underline">Contact</a>
-        </nav>
-      </div>
-    </header>
-    <!-- end navigation -->
-
-    <main class="max-w-4xl w-full mx-auto grow pt-14">
-      <!-- hero -->
-      <section class="px-4">
-        <div class="h-48 border-b border-neutral-400 flex items-center">
-          <div class="flex items-start gap-4">
-            <div
-              class="flex items-center justify-center border border-neutral-300 rounded size-20 shrink-0 text-2xl leading-none font-mono"
-            >
-              [@]
-            </div>
-            <div class="flex flex-col justify-start gap-1">
-              <h1 class="text-3xl font-extrabold">Reach Out</h1>
-              <p class="text-neutral-600 font-mono text-sm leading-snug">~/$ ping fedaipaca -c 1</p>
-            </div>
-          </div>
+        <div class="mt-2">
+          <h3 class="text-lg font-bold leading-snug">GitHub</h3>
+          <p class="text-neutral-600 leading-snug text-sm">
+            Explore my projects, contributions, and code repositories on GitHub.
+          </p>
+          <p class="mt-2">github.com/fedaipaca</p>
         </div>
-      </section>
-      <!-- end hero -->
+      </a>
 
-      <!-- contact -->
-      <section class="px-4 py-8">
-        <h2 class="font-mono">// GET IN TOUCH</h2>
-        <div class="mt-8 space-y-8">
-          <a href="https://github.com/fedaipaca" target="_blank" class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-neutral-200">
-            <div class="w-20 shrink-0">
-              <img src={githubIcon.src} alt="" class="w-full h-full" />
-            </div>
-            <div class="mt-2">
-              <h3 class="text-lg font-bold leading-snug">GitHub</h3>
-              <p class="text-neutral-600 leading-snug text-sm">
-                Explore my projects, contributions, and code repositories on GitHub.
-              </p>
-              <p class="mt-2">github.com/fedaipaca</p>
-            </div>
-          </a>
-
-          <a href="https://linkedin.com/in/fedaipaca" target="_blank" class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-neutral-200">
-            <div class="w-20 shrink-0">
-              <img src={linkedinIcon.src} alt="" class="w-full h-full" />
-            </div>
-            <div class="mt-2">
-              <h3 class="text-lg font-bold leading-snug">LinkedIn</h3>
-              <p class="text-neutral-600 leading-snug text-sm">
-                Connect with me on LinkedIn to see my professional journey.
-              </p>
-              <p class="mt-2">linkedin.com/in/fedaipaca</p>
-            </div>
-          </a>
+      <a
+        href="https://linkedin.com/in/fedaipaca"
+        target="_blank"
+        class="border border-neutral-300 rounded flex items-start gap-4 p-4 hover:bg-neutral-200"
+      >
+        <div class="w-20 shrink-0">
+          <img src={linkedinIcon.src} alt="" class="w-full h-full" />
         </div>
-      </section>
-    </main>
-    <!-- contact end -->
+        <div class="mt-2">
+          <h3 class="text-lg font-bold leading-snug">LinkedIn</h3>
+          <p class="text-neutral-600 leading-snug text-sm">
+            Connect with me on LinkedIn to see my professional journey.
+          </p>
+          <p class="mt-2">linkedin.com/in/fedaipaca</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</BaseLayout>
 
-    <!-- footer -->
-    <footer class="border-t border-neutral-400">
-      <div class="max-w-4xl mx-auto px-4 py-8 space-y-4 md:flex md:items-center md:justify-between md:space-y-0">
-        <p class="text-sm text-neutral-600 font-mono">
-          <span class="block">© 2025 fedaipaca;</span>
-          <span class="mt-1 block">// Code Blog, well-commented thoughts.</span>
-        </p>
-        <nav class="text-center">
-          <a href="/" class="text-sm text-neutral-600 font-mono px-2">Home</a>
-          <a href="/contact" class="text-sm text-neutral-600 font-mono px-2">Contact</a>
-        </nav>
-      </div>
-    </footer>
-  </body>
-  <!-- footer end -->
-</html>

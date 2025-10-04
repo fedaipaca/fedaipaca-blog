@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+
+// get path name to highlight active link
+const { pathname } = Astro.url;
 ---
 
 <!doctype html>
@@ -16,23 +19,36 @@ import "../styles/global.css";
     <header class="border-b border-neutral-400 fixed top-0 inset-x-0 bg-stone-100">
       <div class="max-w-4xl mx-auto h-14 px-2 flex items-stretch justify-between font-mono">
         <div class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 text-lg font-bold">fedaipaca;</a>
+          <a href="/" class="self-stretch flex items-center px-2 text-lg font-bold hover:underline">fedaipaca;</a>
         </div>
         <nav class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 active:underline">Home</a>
-          <a href="/contact" class="self-stretch flex items-center px-2 active:underline">Contact</a>
+          <a href="/" class:list={["self-stretch flex items-center px-2", { underline: pathname === "/" }]}>Home</a>
+          <a
+            href="/contact"
+            class:list={["self-stretch flex items-center px-2", { underline: pathname === "/contact" }]}>Contact</a
+          >
         </nav>
       </div>
     </header>
     <!-- end navigation -->
 
-    <!-- post -->
     <main class="max-w-4xl w-full mx-auto grow pt-14">
-      <article class="prose-l py-14 px-4">
-        <h1>Blog content will come here</h1>
-      </article>
+      <!-- hero -->
+
+      <section class="px-4">
+        <div class="h-48 border-b border-neutral-400 flex items-center">
+          <slot name="hero" />
+        </div>
+      </section>
+
+      <!-- end hero -->
+
+      <!-- posts -->
+      <section class="px-4 py-8">
+        <slot />
+      </section>
+      <!-- posts end -->
     </main>
-    <!-- post end -->
 
     <!-- footer -->
     <footer class="border-t border-neutral-400">
