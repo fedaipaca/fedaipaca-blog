@@ -1,12 +1,22 @@
 ---
 import "../styles/global.css";
-
-// get path name to highlight active link
-const { pathname } = Astro.url;
+import { resolvePath } from "../lib/utils";
 
 // get page title from props
 const { title } = Astro.props;
 const pageTitle = title ? `${title} | fedaipaca;` : "fedaipaca;";
+
+// get path name to highlight active link
+const { pathname } = Astro.url;
+
+const canonicalURL = new URL(pathname, Astro.site);
+
+const navLinks = [
+  { href: resolvePath("/"), text: "Home" },
+  { href: resolvePath("/contact"), text: "Contact" },
+];
+
+const homePageUrl = resolvePath("/");
 ---
 
 <!doctype html>
@@ -16,6 +26,7 @@ const pageTitle = title ? `${title} | fedaipaca;` : "fedaipaca;";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
     <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen flex flex-col font-sans antialiased text-neutral-900 bg-stone-100">
@@ -23,14 +34,22 @@ const pageTitle = title ? `${title} | fedaipaca;` : "fedaipaca;";
     <header class="border-b border-neutral-400 fixed top-0 inset-x-0 bg-stone-100">
       <div class="max-w-4xl mx-auto h-14 px-2 flex items-stretch justify-between font-mono">
         <div class="h-full flex">
-          <a href="/" class="self-stretch flex items-center px-2 text-lg font-bold hover:underline">fedaipaca;</a>
-        </div>
-        <nav class="h-full flex">
-          <a href="/" class:list={["self-stretch flex items-center px-2", { underline: pathname === "/" }]}>Home</a>
-          <a
-            href="/contact"
-            class:list={["self-stretch flex items-center px-2", { underline: pathname === "/contact" }]}>Contact</a
+          <a href={homePageUrl} class="self-stretch flex items-center px-2 text-lg font-bold hover:underline"
+            >fedaipaca;</a
           >
+        </div>
+
+        <nav class="h-full flex">
+          {
+            navLinks.map((link) => (
+              <a
+                href={link.href}
+                class:list={["self-stretch flex items-center px-2", { underline: pathname === link.href }]}
+              >
+                {link.text}
+              </a>
+            ))
+          }
         </nav>
       </div>
     </header>
@@ -58,8 +77,13 @@ const pageTitle = title ? `${title} | fedaipaca;` : "fedaipaca;";
           <span class="mt-1 block">// Code Blog, well-commented thoughts.</span>
         </p>
         <nav class="text-center">
-          <a href="/" class="text-sm text-neutral-600 font-mono px-2 hover:underline">Home</a>
-          <a href="/contact" class="text-sm text-neutral-600 font-mono px-2 hover:underline">Contact</a>
+          {
+            navLinks.map((link) => (
+              <a href={link.href} class="text-sm text-neutral-600 font-mono px-2 ">
+                {link.text}
+              </a>
+            ))
+          }
         </nav>
       </div>
     </footer>
