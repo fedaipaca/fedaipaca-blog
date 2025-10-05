@@ -4,7 +4,7 @@ pubDate: 2025-10-05
 description: "Explore the lesser-known features of the JavaScript console object. Learn how to debug, profile, and analyze your code like a pro."
 tags: ["javascript", "debugging", "console", "web-development"]
 image: { src: "./console-log.jpg", alt: "Hero image for the article" }
-isDraft: true
+isDraft: false
 ---
 
 When we think of debugging in JavaScript, the first tool that comes to mind is `console.log`. While it's a great starting point, the `console` object offers a treasure trove of methods that can supercharge your debugging and development workflow.
