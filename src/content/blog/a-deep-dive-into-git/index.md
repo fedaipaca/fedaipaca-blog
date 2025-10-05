@@ -4,7 +4,7 @@ pubDate: 2025-10-04
 description: "A comprehensive guide to understanding Git's core concepts, from the staging area to advanced collaboration workflows. Perfect for beginners and those looking to solidify their mental model."
 tags: ["git", "version-control", "devtools", "collaboration"]
 image: { src: "./hero-javascript.jpg", alt: "Hero image for the article" }
-isDraft: true
+isDraft: false
 ---
 
 Git is the cornerstone of modern software development, yet many of us only scratch the surface of its capabilities. We `git add`, `git commit`, and `git push`, but do we truly understand what's happening under the hood?
