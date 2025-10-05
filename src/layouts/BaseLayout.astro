@@ -3,6 +3,10 @@ import "../styles/global.css";
 
 // get path name to highlight active link
 const { pathname } = Astro.url;
+
+// get page title from props
+const { title } = Astro.props;
+const pageTitle = title ? `${title} | fedaipaca;` : "fedaipaca;";
 ---
 
 <!doctype html>
@@ -10,9 +14,9 @@ const { pathname } = Astro.url;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>fedaipaca</title>
+    <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen flex flex-col font-sans antialiased text-neutral-900 bg-stone-100">
     <!-- navigation -->

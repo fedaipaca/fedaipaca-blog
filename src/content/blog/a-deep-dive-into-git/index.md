@@ -3,7 +3,8 @@ title: "A Deep Dive into Git: From Commits to Collaboration"
 pubDate: 2025-10-04
 description: "A comprehensive guide to understanding Git's core concepts, from the staging area to advanced collaboration workflows. Perfect for beginners and those looking to solidify their mental model."
 tags: ["git", "version-control", "devtools", "collaboration"]
-heroImage: "./hero-javascript.jpg"
+image: { src: "./hero-javascript.jpg", alt: "Hero image for the article" }
+isDraft: true
 ---
 
 Git is the cornerstone of modern software development, yet many of us only scratch the surface of its capabilities. We `git add`, `git commit`, and `git push`, but do we truly understand what's happening under the hood?
@@ -43,22 +44,22 @@ A branch in Git is surprisingly lightweight: it's simply a movable pointer to a 
 
 Here’s a typical feature development workflow:
 
--   Create a new branch: `git checkout -b new-feature`
--   Make your changes and commit them.
--   Push the branch to the remote: `git push -u origin new-feature`
--   Open a Pull Request (PR).
+- Create a new branch: `git checkout -b new-feature`
+- Make your changes and commit them.
+- Push the branch to the remote: `git push -u origin new-feature`
+- Open a Pull Request (PR).
 
 This isolates your work, keeping the `main` branch clean and stable.
 
 ## Dissecting a Commit
 
-What *is* a commit? It's a snapshot of your project at a specific point in time, containing:
+What _is_ a commit? It's a snapshot of your project at a specific point in time, containing:
 
--   **A unique SHA-1 hash**: An ID like `a1e8fb5`.
--   **A pointer to its parent commit(s)**: This creates the chain of history.
--   **The author and committer info**: Who made the change and when.
--   **The commit message**: Your description of the change.
--   **A pointer to the top-level tree** for this snapshot.
+- **A unique SHA-1 hash**: An ID like `a1e8fb5`.
+- **A pointer to its parent commit(s)**: This creates the chain of history.
+- **The author and committer info**: Who made the change and when.
+- **The commit message**: Your description of the change.
+- **A pointer to the top-level tree** for this snapshot.
 
 ### Anatomy of a `git diff`
 
@@ -75,21 +76,21 @@ This simple output is the foundation of code reviews and understanding change ov
 
 A **remote** is a version of your repository hosted somewhere else, like GitHub.
 
-| Command | Description |
-| :--- | :--- |
+| Command     | Description                                                            |
+| :---------- | :--------------------------------------------------------------------- |
 | `git fetch` | Downloads history from the remote but doesn't change your local files. |
-| `git merge` | Combines the fetched history with your current branch. |
-| `git pull` | A combination of `git fetch` and `git merge`. |
-| `git push` | Uploads your local commits to the remote branch. |
+| `git merge` | Combines the fetched history with your current branch.                 |
+| `git pull`  | A combination of `git fetch` and `git merge`.                          |
+| `git push`  | Uploads your local commits to the remote branch.                       |
 
 > **Best Practice**: Always `git pull` or `git fetch` before starting new work to ensure you have the latest changes from the remote.
 
 #### A Note on Rebasing
 
-Another way to integrate changes is with `git rebase`. Instead of creating a merge commit, rebasing replays your local commits *on top of* the latest remote changes.
+Another way to integrate changes is with `git rebase`. Instead of creating a merge commit, rebasing replays your local commits _on top of_ the latest remote changes.
 
--   **Pros**: Creates a cleaner, linear history.
--   **Cons**: Rewrites history, which can be dangerous on shared branches.
+- **Pros**: Creates a cleaner, linear history.
+- **Cons**: Rewrites history, which can be dangerous on shared branches.
 
 Never rebase a branch that other people are working on!
 
@@ -97,9 +98,9 @@ Never rebase a branch that other people are working on!
 
 We've covered a lot, but this is just the beginning.
 
--   Git manages three trees: Working Directory, Staging Area, and History.
--   Commits are immutable snapshots.
--   Branches are lightweight pointers.
--   Remotes enable powerful, distributed collaboration.
+- Git manages three trees: Working Directory, Staging Area, and History.
+- Commits are immutable snapshots.
+- Branches are lightweight pointers.
+- Remotes enable powerful, distributed collaboration.
 
-By understanding these core concepts, you move from just *using* Git to truly *leveraging* it. Happy coding!
+By understanding these core concepts, you move from just _using_ Git to truly _leveraging_ it. Happy coding!

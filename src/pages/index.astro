@@ -1,74 +1,9 @@
 ---
-import appleImage from "../assets/apple.jpg";
-import orangeImage from "../assets/orange.jpg";
-import cherryImage from "../assets/cherry.jpg";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
-type Post = {
-  title: string;
-  excerpt: string;
-  date: string;
-  tags: string[];
-  image: { src: string };
-  href?: string;
-  highlight?: boolean;
-};
-
-const posts: Post[] = [
-  {
-    title: "Understanding Async Patterns in JavaScript",
-    excerpt: "A concise guide to callbacks, promises, and async/await with practical examples to tame concurrency.",
-    date: "2025-10-04",
-    tags: ["#javascript", "#async", "#patterns"],
-    image: appleImage,
-    href: "#",
-    highlight: true,
-  },
-  {
-    title: "TypeScript Tips",
-    excerpt:
-      "Practical techniques to make everyday TypeScript code safer and clearer. Learn small patterns you can apply immediately: narrower union types, meaningful utility types, and how to balance strictness with developer ergonomics.",
-    date: "2025-09-18",
-    tags: ["#typescript", "#tips", "#best-practices", "#devtools", "#static-types"],
-    image: orangeImage,
-    href: "#",
-  },
-  {
-    title: "A Step-by-Step Walkthrough to Deploying Astro Sites with GitHub Actions and Managing Secrets",
-    excerpt: "Quick CI/CD checklist and action snippets.",
-    date: "2025-10-01",
-    tags: ["#astro", "#github-actions"],
-    image: cherryImage,
-    href: "#",
-  },
-  {
-    title: "Optimizing Web Performance with Lighthouse",
-    excerpt:
-      "Practical steps to interpret Lighthouse reports, fix common bottlenecks, and prioritize improvements that matter to users.",
-    date: "2025-08-12",
-    tags: ["#performance", "#lighthouse", "#webdev"],
-    image: appleImage,
-    href: "#",
-  },
-  {
-    title: "Designing Accessible UI Components",
-    excerpt:
-      "A hands-on checklist for building accessible buttons, forms, and navigation—covering semantics, keyboard support, and testing.",
-    date: "2025-07-30",
-    tags: ["#accessibility", "#a11y", "#components"],
-    image: orangeImage,
-    href: "#",
-  },
-  {
-    title: "Serverless Patterns for Modern Apps",
-    excerpt:
-      "Exploring event-driven designs, cold-start mitigation, and cost considerations when moving features to serverless platforms.",
-    date: "2025-06-21",
-    tags: ["#serverless", "#cloud", "#patterns"],
-    image: cherryImage,
-    href: "#",
-  },
-];
+const allPosts = await getCollection("blog", ({ data }) => !data.isDraft);
 ---
 
 <BaseLayout>
@@ -93,28 +28,41 @@ const posts: Post[] = [
 
     <div class="divide-y divide-gray-300">
       {
-        posts.map((post) => (
-          <article class="hover:bg-stone-50">
-            <a href={post.href || "#"} class="flex items-start gap-4 py-8 group ">
-              <div class="w-20 shrink-0 rounded overflow-hidden">
-                <img src={post.image.src} alt="" class="aspect-square object-cover" />
-              </div>
-              <div>
-                <h3 class="text-lg font-bold leading-snug mt-0 group-hover:underline">{post.title}</h3>
+        allPosts.length === 0 ? (
+          <p class="py-8 text-neutral-600 font-mono">Oops! Nothing to read.</p>
+        ) : (
+          allPosts.map((post) => (
+            <article class="hover:bg-stone-50">
+              <a href={`/blog/${post.id}`} class="flex items-start gap-4 py-8 group ">
+                {post.data.image && (
+                  <div class="w-20 shrink-0 rounded overflow-hidden">
+                    <Image src={post.data.image.src} alt={post.data.image.alt} class="aspect-square object-cover" />
+                  </div>
+                )}
+                <div>
+                  <h3 class="text-lg font-bold leading-snug mt-0 group-hover:underline">{post.data.title}</h3>
 
-                <p class="mt-2 text-neutral-600 leading-snug text-sm">{post.excerpt}</p>
-                <time datetime={post.date} class="text-nowrap font-mono tracking-tight text-xs text-neutral-600">
-                  {new Date(post.date).toLocaleString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                </time>
-                <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
-                  {post.tags.map((tag) => (
-                    <span class="">{tag}</span>
-                  ))}
+                  <p class="mt-2 text-neutral-600 leading-snug text-sm">{post.data.description}</p>
+                  <time
+                    datetime={post.data.pubDate.toString()}
+                    class="text-nowrap font-mono tracking-tight text-xs text-neutral-600"
+                  >
+                    {new Date(post.data.pubDate).toLocaleString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </time>
+                  <div class="mt-1 font-mono text-xs text-neutral-600 tracking-tight gap-x-2 gap-y-1 flex flex-wrap">
+                    {post.data.tags?.map((tag) => (
+                      <span class="">#{tag}</span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </a>
-          </article>
-        ))
+              </a>
+            </article>
+          ))
+        )
       }
     </div>
   </div>
