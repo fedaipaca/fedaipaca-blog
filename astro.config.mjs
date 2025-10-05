@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://fedaipaca.github.io",
   base: "/fedaipaca.com",
+  trailingSlash: "never",
 
   vite: {
     plugins: [tailwindcss()],
